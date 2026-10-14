@@ -5,6 +5,7 @@ owner: ["Rob Cass", "Edward Dixon"]
 description: Ireland's housing dashboard tracking housing delivery, wait times, and first-time buyer data by Local Electoral Area.
 status: true
 link: https://onemillionhomes.ie/
+foundingYear: 2026
 ---
 
 Ireland's housing dashboard tracking housing delivery, wait times, and first-time buyer data by Local Electoral Area.

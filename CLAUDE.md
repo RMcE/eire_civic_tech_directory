@@ -26,9 +26,10 @@ There is **no test runner and no linter configured**. Type checking comes from t
 The entire site is generated from one Astro content collection. Understanding the data flow is the key to being productive:
 
 1. **Content source** — `src/content/projects/*.md`. One Markdown file per project. The filename (slug) becomes the route. The collection is defined in `src/content.config.ts`, which uses Astro's `glob` loader and a Zod schema enforcing this frontmatter on every file:
-   - `title` (string), `category` (string), `owner` (string), `description` (string), `status` (boolean — active/inactive), `link` (valid URL).
+   - `title` (string), `category` (string), `owner` (array of strings), `description` (string), `status` (boolean — active/inactive), `link` (valid URL).
    - `category` is **free-text** — the schema does not constrain it to a fixed set. A de facto list has emerged from existing entries (`Governance`, `Geospatial`, `Finance`, `Democracy`, `Road Safety`, `Petitions`, `Non-Profit Finance`, `Housing`, `Crime`, `Accountability`) and it is inconsistent (e.g. both `Finance` and `Non-Profit Finance` exist). Prefer reusing an existing value over coining a new one, but nothing enforces this.
-   - `owner` is the person/organisation that runs **that project** — distinct from the site author (see SEO below). Do not conflate them.
+   - `owner` is an array of people/organisations that run **that project** — distinct from the site author (see SEO below). Each entry gets its own creator page; a project with multiple owners appears on each owner's page. Do not conflate with the site author.
+   - `foundingYear` (optional integer, 1900–current year) — the year the project/site was founded. Omit if unknown. Displayed on the project card and detail page when present.
    - Body Markdown below the frontmatter is optional and renders on the project detail page.
 
 2. **Pages consume the collection** via `getCollection('projects')`:

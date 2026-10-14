@@ -5,6 +5,7 @@ owner: ["Brian Hollinshead"]
 description: Dublin historic maps, boundaries & and OpenStreetMap miscellany.
 status: true
 link: https://www.dublinhistoricmaps.ie/
+foundingYear: 2018
 ---
 
 DublinHistoricMaps is a collection of scanned and digitised maps mostly relating to the city and county of Dublin.

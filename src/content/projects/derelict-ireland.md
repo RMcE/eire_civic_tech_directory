@@ -6,6 +6,7 @@ description: A map of derelict sites across Ireland, built from the registers co
 status: true
 link: https://acoci86.github.io/derelict-ireland/
 repo: https://github.com/ACoci86/derelict-ireland
+foundingYear: 2026
 ---
 
 A map of derelict sites across Ireland, built from the registers councils are legally required to keep.

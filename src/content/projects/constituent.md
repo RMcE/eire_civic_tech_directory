@@ -5,6 +5,7 @@ owner: ["Owen Connor"]
 description: Find your representatives and track the issues that shape Ireland and the EU.
 status: true
 link: https://constituent.ie/
+foundingYear: 2025
 ---
 
 Constituent is a pioneering platform dedicated to strengthening democratic engagement in Ireland. We believe that effective representation starts with accessible communication between citizens and their elected officials.

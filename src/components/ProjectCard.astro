@@ -57,6 +57,14 @@ const inactiveBadge = 'bg-gray-100 text-gray-600 border-gray-200';
           ))}
         </span>
       </div>
+      {project.data.foundingYear && (
+        <div class="flex items-center text-sm">
+          <span class="text-gray-400 font-medium w-20 shrink-0">Founded</span>
+          <time datetime={String(project.data.foundingYear)} class="text-irish-charcoal font-medium">
+            {project.data.foundingYear}
+          </time>
+        </div>
+      )}
     </div>
 
     {project.data.repo && (

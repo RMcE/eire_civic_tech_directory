@@ -118,6 +118,14 @@ const schema = {
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Status</p>
             <p class="text-irish-charcoal font-medium">{project.data.status ? 'Active' : 'Inactive'}</p>
           </div>
+          {project.data.foundingYear && (
+            <div>
+              <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Founded</p>
+              <p class="text-irish-charcoal font-medium">
+                <time datetime={String(project.data.foundingYear)}>{project.data.foundingYear}</time>
+              </p>
+            </div>
+          )}
           <div>
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Website</p>
             <a

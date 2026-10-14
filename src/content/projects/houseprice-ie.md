@@ -5,6 +5,7 @@ owner: ["u/hungry475 on Reddit"]
 description: Ireland's Property Price Register, made searchable.
 status: true
 link: https://houseprice.ie/
+foundingYear: 2025
 ---
 
 We created HousePrice.ie to solve some of the shortcomings of the existing open data, and to aggregate the Property Price Register data with other sources to provide a more complete picture of the market.
