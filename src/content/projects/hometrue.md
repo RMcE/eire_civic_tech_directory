@@ -5,6 +5,7 @@ owner: ["Unknown"]
 description: Search any address in Ireland to see the commute, energy costs, schools, safety and more.
 status: true
 link: https://hometrue.ie/
+foundingYear: 2026
 ---
 
 We built HomeTrue for people making real decisions about where they live.

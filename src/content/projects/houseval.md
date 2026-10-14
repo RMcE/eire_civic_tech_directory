@@ -5,6 +5,7 @@ owner: ["Ryan O'Connor"]
 description: Typical house prices for every area of Ireland.
 status: true
 link: https://housevalireland.com/
+foundingYear: 2020
 ---
 
 HouseVal is an interactive map that allows users to explore typical residential property prices and related housing information at local level across Ireland.

@@ -12,6 +12,7 @@ const projects = defineCollection({
     status: z.boolean(),
     link: z.string().url(),
     repo: z.string().url().optional(),
+    foundingYear: z.number().int().min(1900).max(new Date().getFullYear()).optional(),
   }),
 });
 

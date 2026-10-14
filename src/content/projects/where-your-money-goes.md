@@ -5,6 +5,7 @@ owner: ["Government"]
 description: Government spending website.
 status: true
 link: https://whereyourmoneygoes.gov.ie
+foundingYear: 2017
 ---
 
 Government spending website.

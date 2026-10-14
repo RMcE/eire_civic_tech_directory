@@ -5,6 +5,7 @@ owner: ["Rituraj Sambherao"]
 description: Real-time intelligence for the Luas, Irish Rail and DART. Built for the realities of Irish transit — no bloat, no noise.
 status: true
 link: https://ezcommute.ie/
+foundingYear: 2026
 ---
 
 EZ Commute IE brings live bus, Luas, and rail departures for all of Ireland into one simple app, not just Dublin.

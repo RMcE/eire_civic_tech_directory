@@ -5,6 +5,7 @@ owner: ["Christopher O'Connor"]
 description: A website for maps and statistical analysis of historical statistics in Ireland and Wales.
 status: true
 link: https://historicstats.com/
+foundingYear: 2023
 ---
 
 At Historic Stats, the aim is to make the intricate details of historical census data accessible and engaging. The platform is designed to provide a user-friendly experience, allowing you to explore and understand the demographic, social, and economic landscapes of Ireland and Wales across the 19th and 20th centuries.

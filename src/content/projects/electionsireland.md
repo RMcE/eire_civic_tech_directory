@@ -5,6 +5,7 @@ owner: ["Christopher Took", "Seán Donnelly"]
 description: Election results on the island of Ireland.
 status: true
 link: https://www.electionsireland.org/
+foundingYear: 1998
 ---
 
 ElectionsIreland.org is a database of election results and candidates on the island of Ireland going back to 1918.

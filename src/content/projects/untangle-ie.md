@@ -5,6 +5,7 @@ owner: ["u/Plashgar on Reddit"]
 description: Checks what Irish renovation grants you’re actually entitled to.
 status: true
 link: https://www.untangle.ie/
+foundingYear: 2026
 ---
 
 untangle.ie analyses renovation cost evidence from public sources:

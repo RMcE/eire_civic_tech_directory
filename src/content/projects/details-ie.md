@@ -5,6 +5,7 @@ owner: ["u/hungry475 on Reddit"]
 description: A profile for every Irish website.
 status: true
 link: https://details.ie/
+foundingYear: 2026
 ---
 
 The top 1,000 websites in Ireland, ranked by estimated web presence and refreshed every month, with twelve months of ranking history behind each position.
