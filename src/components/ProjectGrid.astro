@@ -19,7 +19,7 @@ const selectClass =
 <section>
   <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
     <h2 class="text-2xl font-bold text-irish-charcoal">{heading}</h2>
-    <div class="flex flex-col sm:flex-row gap-3">
+    <div class="flex flex-col sm:flex-row gap-3 sm:flex-wrap sm:justify-end">
       <div class="relative">
         <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
@@ -61,16 +61,29 @@ const selectClass =
     </div>
   </div>
 
-  <div class="flex items-center justify-end mb-6">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
     <span id="project-count" class="text-sm text-gray-500 font-medium">{projects.length} total</span>
+    <div class="relative self-start sm:self-auto">
+      <label for="sort-by" class="sr-only">Sort projects</label>
+      <select id="sort-by" aria-label="Sort projects" class={selectClass}>
+        <option value="default">Default order</option>
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+      </select>
+      <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
   </div>
 
   <ul id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {projects.map((project) => (
+    {projects.map((project, index) => (
       <li
         data-category={project.data.category}
         data-owner={JSON.stringify(project.data.owner)}
         data-opensource={project.data.repo ? 'true' : 'false'}
+        data-founding-year={project.data.foundingYear ?? ''}
+        data-index={index}
         data-search={`${project.data.title} ${project.data.description} ${project.data.category} ${project.data.owner.join(' ')}`.toLowerCase()}
       >
         <ProjectCard project={project} />
@@ -88,27 +101,65 @@ const selectClass =
   const categorySelect = document.getElementById('filter-category') as HTMLSelectElement | null;
   const ownerSelect = document.getElementById('filter-owner') as HTMLSelectElement | null;
   const openSourceToggle = document.getElementById('filter-opensource') as HTMLInputElement | null;
+  const sortSelect = document.getElementById('sort-by') as HTMLSelectElement | null;
   const grid = document.getElementById('project-grid');
   const count = document.getElementById('project-count');
   const noResults = document.getElementById('no-results');
 
-  if (searchInput && categorySelect && ownerSelect && openSourceToggle && grid && count && noResults) {
+  if (
+    searchInput &&
+    categorySelect &&
+    ownerSelect &&
+    openSourceToggle &&
+    sortSelect &&
+    grid &&
+    count &&
+    noResults
+  ) {
     const items = Array.from(grid.querySelectorAll<HTMLLIElement>('li'));
 
-    const applyFilters = () => {
+    const yearOf = (item: HTMLLIElement) => {
+      const raw = item.dataset.foundingYear ?? '';
+      if (!raw) return null;
+      const year = Number(raw);
+      return Number.isFinite(year) ? year : null;
+    };
+
+    const apply = () => {
       const query = searchInput.value.trim().toLowerCase();
       const category = categorySelect.value;
       const owner = ownerSelect.value;
       const openSourceOnly = openSourceToggle.checked;
+      const sort = sortSelect.value;
       let visible = 0;
 
-      for (const item of items) {
+      const sorted = [...items].sort((a, b) => {
+        if (sort === 'default') {
+          return Number(a.dataset.index ?? 0) - Number(b.dataset.index ?? 0);
+        }
+
+        const yearA = yearOf(a);
+        const yearB = yearOf(b);
+
+        // Projects without a founding year sink to the end for both year sorts.
+        if (yearA === null && yearB === null) {
+          return Number(a.dataset.index ?? 0) - Number(b.dataset.index ?? 0);
+        }
+        if (yearA === null) return 1;
+        if (yearB === null) return -1;
+
+        if (sort === 'newest') return yearB - yearA;
+        return yearA - yearB;
+      });
+
+      for (const item of sorted) {
         const matches =
           (!query || (item.dataset.search ?? '').includes(query)) &&
           (!category || item.dataset.category === category) &&
           (!owner || (JSON.parse(item.dataset.owner ?? '[]') as string[]).includes(owner)) &&
           (!openSourceOnly || item.dataset.opensource === 'true');
         item.classList.toggle('hidden', !matches);
+        grid.appendChild(item);
         if (matches) visible++;
       }
 
@@ -116,9 +167,10 @@ const selectClass =
       noResults.classList.toggle('hidden', visible > 0);
     };
 
-    searchInput.addEventListener('input', applyFilters);
-    categorySelect.addEventListener('change', applyFilters);
-    ownerSelect.addEventListener('change', applyFilters);
-    openSourceToggle.addEventListener('change', applyFilters);
+    searchInput.addEventListener('input', apply);
+    categorySelect.addEventListener('change', apply);
+    ownerSelect.addEventListener('change', apply);
+    openSourceToggle.addEventListener('change', apply);
+    sortSelect.addEventListener('change', apply);
   }
 </script>
