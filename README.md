@@ -6,6 +6,16 @@ Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.c
 
 ---
 
+## Founder's Note
+
+As the founder of citizendata.ie, I want to state categorically that this project aims to showcase the best of Ireland's digital researchers and engineers. No matter what stage you're at in your career, don't be afraid to add your project or reach out if you are unsure how. 
+
+That said, please avoid projects that may damage or harass a small business, and don't add any project that targets individuals. 
+
+We're a small country, so we should collaborate and support each other as much as possible. 
+
+- William
+
 ## 🗂️ Project Structure
 
 ```text
